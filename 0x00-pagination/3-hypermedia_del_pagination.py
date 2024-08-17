@@ -40,6 +40,7 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """Return pagination information with deletion resilience."""
         assert isinstance(index, int) and index >= 0 and \
             index < len(self.indexed_dataset())
         indexed_dataset = self.indexed_dataset()
