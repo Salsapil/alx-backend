@@ -17,10 +17,11 @@ class MRUCache(BaseCaching):
                 self.access_order.remove(key)
             elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 # Cache is full, remove the most recently used item
-                mru_key = self.access_order.pop()  # Most recently used key is the last one
+                # Most recently used key is the last one
+                mru_key = self.access_order.pop()
                 del self.cache_data[mru_key]
                 print(f"DISCARD: {mru_key}")
-            
+
             # Add the new key-value pair and update the access order
             self.cache_data[key] = item
             self.access_order.append(key)
@@ -29,7 +30,7 @@ class MRUCache(BaseCaching):
         """Return the value in self.cache_data linked to key."""
         if key is None or key not in self.cache_data:
             return None
-        
+
         # Move the accessed key to the end to mark it as most recently used
         self.access_order.remove(key)
         self.access_order.append(key)

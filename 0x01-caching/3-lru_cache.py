@@ -10,7 +10,7 @@ class LRUCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        """Assign the item value to the dictionary self.cache_data with the key key."""
+        """Assign the item value to the dictionary self.cache_data"""
         if key is not None and item is not None:
             if key in self.cache_data:
                 del self.cache_data[key]
