@@ -1,17 +1,11 @@
 #!/usr/bin/env python3
-"""This script configures a Flask application with Babel.
-The underscore function `_` is used within the Jinja2
-Functions:
-    _ -- A shortcut for `gettext` function,
-    used to look up the translation of a message ID.
-"""
-
+"""Parametrize templates"""
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
 
 class Config:
-    """ Config class """
+    """Config class"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -25,14 +19,14 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale():
-    """ return best match """
+def get_locale() -> str:
+    """return best match"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
 def index():
-    """ default route """
+    """default route"""
     return render_template('3-index.html')
 
 
