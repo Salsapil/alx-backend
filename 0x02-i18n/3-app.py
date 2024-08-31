@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parametrize templates"""
+"""This script configures a Flask application with Babel"""
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
